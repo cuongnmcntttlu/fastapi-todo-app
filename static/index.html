@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAPI Todo App</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="badge">FastAPI + Task Status Workflow</div>
+            <h1>Danh Sách Công Việc</h1>
+            <p class="subtitle">Quản lý trạng thái: Chờ làm • Đang làm • Hoàn thành</p>
+        </header>
+
+        <main>
+            <!-- Form thêm Todo -->
+            <section class="card form-card">
+                <form id="todoForm" class="todo-form">
+                    <input 
+                        type="text" 
+                        id="todoInput" 
+                        placeholder="Nhập công việc cần làm..." 
+                        autocomplete="off"
+                        required
+                    />
+                    <select id="todoInitialStatus" class="status-select" title="Chọn trạng thái khởi tạo">
+                        <option value="todo">📋 Chờ làm</option>
+                        <option value="in_progress">⚡ Đang làm</option>
+                    </select>
+                    <button type="submit" id="addBtn">
+                        <span>+ Thêm</span>
+                    </button>
+                </form>
+                <div id="formMessage" class="message"></div>
+            </section>
+
+            <!-- Bộ lọc và Thống kê -->
+            <section class="card filter-card">
+                <div class="stats" id="todoStats">
+                    <span>Đang tải...</span>
+                </div>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">Tất cả</button>
+                    <button class="filter-btn" data-filter="todo">Chờ làm</button>
+                    <button class="filter-btn filter-btn-in-progress" data-filter="in_progress">⚡ Đang làm</button>
+                    <button class="filter-btn filter-btn-completed" data-filter="completed">✓ Đã xong</button>
+                </div>
+            </section>
+
+            <!-- Danh sách công việc -->
+            <section class="card list-card">
+                <ul id="todoList" class="todo-list">
+                    <!-- Danh sách Todo sẽ được render tại đây -->
+                </ul>
+                <div id="emptyState" class="empty-state" style="display: none;">
+                    <p>🎉 Không có công việc nào trong danh mục này!</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>
+                FastAPI Backend • Xem tài liệu Swagger tại 
+                <a href="/docs" target="_blank" rel="noopener noreferrer">/docs</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
